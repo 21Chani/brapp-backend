@@ -1,5 +1,5 @@
 import http from 'http'
-import { app } from './app'
+import { app } from '../api'
 import { DEFAULT_PORT } from './lib/constants'
 
 const PORT = process.env.PORT || DEFAULT_PORT
