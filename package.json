@@ -2,11 +2,11 @@
   "name": "brapp-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && node dist/server.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon dist/server.js\"",
+    "start": "node .",
+    "dev": "nodemon api/index.js",
     "build": "npx tsc"
   },
   "keywords": [],
