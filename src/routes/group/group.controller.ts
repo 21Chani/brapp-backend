@@ -1,15 +1,15 @@
 import { Request, Response } from 'express'
 import { createGroup } from '../../models/groups/group.model'
-import { GroupDataValues, Groups } from '../../models/groups/group.postgres'
+import { Group, Groups } from '../../models/groups/group.mongo'
 
-export async function httpCreateGroup(req: Request<any, any, GroupDataValues>, res: Response) {
+export async function httpCreateGroup(req: Request<any, any, Group>, res: Response) {
   const data = req.body
   const { error, group } = await createGroup(data)
   if (error) return res.status(500).json({ error })
-  return res.json({ ...group?.dataValues })
+  return res.json({ status: 'ok' })
 }
 
 export async function httpGetAllGroups(req: Request, res: Response) {
-  const groups = await Groups.findAll()
+  const groups = await Groups.find({}, { __id: 0, __v: 0 })
   return res.json({ ...groups })
 }

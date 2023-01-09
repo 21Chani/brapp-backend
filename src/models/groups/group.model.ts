@@ -1,13 +1,13 @@
 import { v4 as uuidV4 } from 'uuid'
-import { GroupDataValues, Groups } from './group.postgres'
+import { Group, Groups } from './group.mongo'
 
 export async function hasGroup(uuid: string) {
-  const group = await Groups.findByPk(uuid)
-  const hasGroup = Boolean(group?.dataValues)
+  const group = await Groups.findOne({ uuid })
+  const hasGroup = Boolean(group)
   return hasGroup
 }
 
-export async function createGroup(data: GroupDataValues) {
+export async function createGroup(data: Group) {
   try {
     const uuid = uuidV4()
     const group = await Groups.create({ ...data, uuid })
