@@ -14,8 +14,8 @@ export interface GroupModel extends Model<GroupDataValues, GroupDataValues> {}
 export const Groups = postgres.define<GroupModel>('groups', {
   uuid: { type: DataTypes.UUID, primaryKey: true, allowNull: false, unique: true },
   description: { type: DataTypes.STRING, allowNull: false },
-  longitude: { type: DataTypes.NUMBER, allowNull: false },
-  latitude: { type: DataTypes.NUMBER, allowNull: false },
+  longitude: { type: DataTypes.INTEGER, allowNull: false },
+  latitude: { type: DataTypes.INTEGER, allowNull: false },
   image: { type: DataTypes.STRING, allowNull: false },
   name: { type: DataTypes.STRING, allowNull: false },
 })
