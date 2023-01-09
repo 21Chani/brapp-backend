@@ -9,6 +9,7 @@ export const postgres = new Sequelize(PSQL_DATABASE, PSQL_USER, PSQL_PASSWORD, {
 
 export async function connectDb() {
   const date = Date.now()
+  import('../models/groups/group.postgres')
   await postgres.sync({ logging: false })
   const ms = Date.now() - date
   console.log(`Database connected successfuly. ${ms}ms`)
