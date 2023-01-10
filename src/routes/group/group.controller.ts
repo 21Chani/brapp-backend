@@ -6,7 +6,7 @@ export async function httpCreateGroup(req: Request<any, any, Group>, res: Respon
   const data = req.body
   const { error, group } = await createGroup(data)
   if (error) return res.status(500).json({ error })
-  return res.json({ status: 'ok' })
+  return res.json({ status: 'ok', group: data })
 }
 
 export async function httpGetAllGroups(req: Request, res: Response) {

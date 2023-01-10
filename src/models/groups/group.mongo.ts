@@ -6,6 +6,7 @@ export interface Group {
   description?: string
   longitude?: number
   name?: string
+  category: string
 }
 
 const GroupsSchema = new mongoose.Schema<Group>({
@@ -15,6 +16,7 @@ const GroupsSchema = new mongoose.Schema<Group>({
   longitude: { type: Number, required: true },
   image: { type: String, required: true },
   uuid: { type: String, required: true },
+  category: { type: String, required: true },
 })
 
 export const Groups = mongoose.model('groups', GroupsSchema)

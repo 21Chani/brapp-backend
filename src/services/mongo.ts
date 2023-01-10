@@ -9,7 +9,7 @@ export async function mongoConnect() {
   const date = Date.now()
   console.log('\nConnecting to mongodb instance...')
   try {
-    await connect(MONGO_URL)
+    await connect(MONGO_URL, { dbName: 'brapp' })
     const ms = Date.now() - date
 
     console.log(`Database connected successfuly. ${ms}ms\n`)
