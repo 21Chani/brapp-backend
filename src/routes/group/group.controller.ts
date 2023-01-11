@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { createGroup } from '../../models/groups/group.model'
+import { createGroup, getAllGroups } from '../../models/groups/group.model'
 import { Group, Groups } from '../../models/groups/group.mongo'
 
 export async function httpCreateGroup(req: Request<any, any, Group>, res: Response) {
@@ -10,6 +10,9 @@ export async function httpCreateGroup(req: Request<any, any, Group>, res: Respon
 }
 
 export async function httpGetAllGroups(req: Request, res: Response) {
-  const groups = await Groups.find({}, { __id: 0, __v: 0 })
+  const { groups, error } = await getAllGroups()
+  if (error) {
+    return res.status(500).json({ message: 'Ocurred an error trying to fetch all groups', error })
+  }
   return res.json({ ...groups })
 }
