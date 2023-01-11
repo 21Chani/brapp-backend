@@ -1,10 +1,9 @@
 import { connect, disconnect } from 'mongoose'
 import { config } from 'dotenv'
+import { MONGO_PASSWORD, MONGO_SERVER, MONGO_USER } from '../lib/process.env'
 config()
-const USERNAME = process.env.MONGO_USER
-const PASSWORD = process.env.MONGO_PASSWORD
-const MONGO_URL = `mongodb+srv://${USERNAME}:${PASSWORD}@server.cockr.mongodb.net/?retryWrites=true&w=majority`
 
+const MONGO_URL = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_SERVER}.cockr.mongodb.net/?retryWrites=true&w=majority`
 export async function connectMongo() {
   try {
     await connect(MONGO_URL, { dbName: 'brapp' })
