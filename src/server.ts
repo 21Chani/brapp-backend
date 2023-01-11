@@ -4,12 +4,12 @@ import { DEFAULT_PORT } from './lib/constants'
 import { mongoConnect } from './services/mongo'
 
 const PORT = process.env.PORT || DEFAULT_PORT
-const server = http.createServer(app)
-async function initializeServer() {
-  await mongoConnect()
-  server.listen(PORT, () => {
-    console.log(`Server running in port: ${PORT}`)
-  })
-}
 
-initializeServer()
+app.get('/', (_, res) => res.send('Express on vercel!!!'))
+
+app.listen(PORT, async () => {
+  await mongoConnect()
+  console.log('Running on port:', PORT)
+})
+
+export default app

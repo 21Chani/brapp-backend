@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist",
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.ts"
+    }
+  ]
+}
