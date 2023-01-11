@@ -22,3 +22,15 @@ export async function createGroup(data: Group) {
     return { error: error.message, group: undefined }
   }
 }
+
+export async function getAllGroups() {
+  try {
+    await connectMongo()
+    const groups = await Groups.find({})
+    await disconnectMongo()
+    return { groups, error: undefined }
+  } catch (error) {
+    if (!(error instanceof Error)) return { error, group: undefined }
+    return { error: error, group: undefined }
+  }
+}

@@ -1,3 +1,4 @@
+import { ReadStream } from 'fs'
 import mongoose from 'mongoose'
 export interface Group {
   uuid?: string

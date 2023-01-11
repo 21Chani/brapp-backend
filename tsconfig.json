@@ -8,6 +8,10 @@
     "skipLibCheck": true,
     "outDir": "./dist"
   },
+
   "include": ["./types/**/*.ts", ".", "**/*.ts"],
-  "exclude": ["./dist"]
+  "exclude": ["./dist"],
+  "ts-node": {
+    "ignoreDiagnostics": [2345]
+  }
 }
