@@ -1,7 +1,20 @@
+import { ReadStream } from 'fs'
 import mongoose from 'mongoose'
 export interface Group {
   uuid?: string
   image?: string
+  latitude?: number
+  description?: string
+  longitude?: number
+  name?: string
+  category: string
+}
+export interface RawGroup {
+  uuid?: string
+  image?: {
+    file: string | Buffer | ReadStream
+    fileName: string
+  }
   latitude?: number
   description?: string
   longitude?: number
