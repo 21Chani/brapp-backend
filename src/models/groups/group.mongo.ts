@@ -8,7 +8,13 @@ export interface Group {
   longitude?: number
   name?: string
   category: string
+  products?: { name: string; price: number }[]
 }
+
+const ProductSchema = new mongoose.Schema({
+  name: { type: { type: String, required: true } },
+  price: { type: Number, required: true },
+})
 
 const GroupsSchema = new mongoose.Schema<Group>({
   name: { type: String, required: true },
@@ -18,6 +24,11 @@ const GroupsSchema = new mongoose.Schema<Group>({
   image: { type: String, required: true },
   uuid: { type: String, required: true },
   category: { type: String, required: true },
+  products: {
+    type: [ProductSchema],
+    default: [],
+    required: true,
+  },
 })
 
 export const Groups = mongoose.model('groups', GroupsSchema)
